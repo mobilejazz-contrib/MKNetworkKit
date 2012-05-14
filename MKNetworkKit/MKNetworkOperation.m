@@ -1181,10 +1181,11 @@ totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite {
     }
     
   } else if (self.response.statusCode >= 400 && self.response.statusCode < 600 && ![self isCancelled]) {                        
-    
+    NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithDictionary:self.response.allHeaderFields];
+    [userInfo setObject:self.responseString forKey:@"responseString"];
     [self operationFailedWithError:[NSError errorWithDomain:NSURLErrorDomain
                                                        code:self.response.statusCode
-                                                   userInfo:self.response.allHeaderFields]];
+                                                   userInfo:userInfo]];
   }  
   [self endBackgroundTask];
   
