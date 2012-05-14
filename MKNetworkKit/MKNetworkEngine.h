@@ -297,7 +297,7 @@
  *  
  *  @discussion
  *	This method should be called explicitly to enable caching for this engine.
- *  By default, MKNetworkKit doens't cache your requests.
+ *  By default, MKNetworkKit doesn't cache your requests.
  *  The cacheMemoryCost and cacheDirectoryName will be used when you turn caching on using this method.
  */
 -(void) useCache;
