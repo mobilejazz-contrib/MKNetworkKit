@@ -608,7 +608,7 @@
   
   [displayString appendFormat:@" \"%@\"",  self.url];
   
-  if ([self.request.HTTPMethod isEqualToString:@"POST"] || [self.request.HTTPMethod isEqualToString:@"PUT"]) {
+  if ([self.request.HTTPMethod isEqualToString:@"POST"] || [self.request.HTTPMethod isEqualToString:@"PUT"] || [self.request.HTTPMethod isEqualToString:@"PATCH"]) {
     
     NSString *option = [self.filesToBePosted count] == 0 ? @"-d" : @"-F";
     if(self.postDataEncoding == MKNKPostDataEncodingTypeURL) {
@@ -792,7 +792,7 @@
   
   if(!self.isCancelled) {
     
-    if (([self.request.HTTPMethod isEqualToString:@"POST"] || [self.request.HTTPMethod isEqualToString:@"PUT"]) && !self.request.HTTPBodyStream) {
+    if ([self.request.HTTPMethod isEqualToString:@"POST"] || ()[self.request.HTTPMethod isEqualToString:@"PUT"] && !self.request.HTTPBodyStream) || [self.request.HTTPMethod isEqualToString:@"PATCH"]) {
       
       [self.request setHTTPBody:[self bodyData]];
     }
